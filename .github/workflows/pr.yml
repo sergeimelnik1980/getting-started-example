@@ -20,6 +20,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
 
   build:
+    needs: cache
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +34,7 @@ jobs:
           restore-keys: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
         if: steps.cache.outputs.cache-hit != 'true'
-      - run: npx lerna run test --since=origin/main
+      - run: npx lerna run test --since
         
 
 
