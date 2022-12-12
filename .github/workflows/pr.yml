@@ -43,7 +43,7 @@ jobs:
       - run: npx lerna changed --json
 
   build:
-    needs: chamged
+    needs: changed
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
