@@ -64,8 +64,7 @@ jobs:
           restore-keys: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - name: build changed package
-        run:  npx lerna run build 
-
+        run: npx lerna run e2e -- scope
         
 
 
